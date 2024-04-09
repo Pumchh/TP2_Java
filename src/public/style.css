@@ -1,0 +1,72 @@
+
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+   }
+
+h1{
+    color: #4691ff;
+}
+
+h2{
+    color: #555;
+}
+
+strong{
+    color: #00a6d6;
+}
+
+#enTete{
+    background-color:#eee;
+    box-shadow: 0 0 10px #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+#logo_site{
+    width: 200px;
+}
+
+#enTete a{
+    text-decoration: none;
+    color: #00a6d6;
+    margin: 20px;
+
+}
+
+#presentation{
+    padding: 10px;
+    border-bottom: 1px;
+    text-align: justify;
+}
+
+#presentation video{
+    display: block;
+    margin: auto;
+    width: 500px;
+}
+
+#actualite {
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+}
+
+#actualite article{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#actualite img{
+    width: 200px;
+    border-radius: 10px;
+}
+
+#actualite p{
+    font-size: 0.7em;
+}
+
