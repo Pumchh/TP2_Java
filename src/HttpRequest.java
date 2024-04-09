@@ -35,13 +35,11 @@ public class HttpRequest {
         }
     }
 
-
-
     public String getMethod() {
-        return this.method;
+        return method;
     }
 
     public String getUrl() {
-        return this.url;
+        return url;
     }
 }

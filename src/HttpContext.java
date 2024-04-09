@@ -8,21 +8,21 @@ public class HttpContext {
 
     public HttpContext(Socket socket) throws IOException {
         this.socket = socket;
-        this.request = new HttpRequest(socket);
-        this.response = new HttpResponse(socket);
+        request = new HttpRequest(socket);
+        response = new HttpResponse(socket);
     }
 
     public HttpRequest getRequest() throws IOException{
-        return this.request;
+        return request;
     }
 
     public HttpResponse getResponse() throws IOException {
-        return this.response;
+        return response;
     }
 
     public void close(){
         try {
-            this.socket.close();
+            socket.close();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
