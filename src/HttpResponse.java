@@ -21,5 +21,10 @@ public class HttpResponse {
         output.flush();
     }
 
+    public void sendContent(String contentType, String content) throws IOException {
+        output.write(contentType + "\r\n");
+        output.write(content + "\r\n");
+        output.flush();
+    }
 
 }
