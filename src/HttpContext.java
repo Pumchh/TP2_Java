@@ -2,32 +2,29 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class HttpContext {
-    private Socket socket;
-    private HttpRequest request;
-    private HttpResponse response;
+    private final Socket socket;
+    private final HttpRequest request;
+    private final HttpResponse response;
 
     public HttpContext(Socket socket) throws IOException {
         this.socket = socket;
-        request = new HttpRequest(socket);
-        response = new HttpResponse(socket);
+        this.request = new HttpRequest(socket);
+        this.response = new HttpResponse(socket);
     }
 
     public HttpRequest getRequest() throws IOException{
-        return request;
+        return this.request;
     }
 
     public HttpResponse getResponse() throws IOException {
-        return response;
+        return this.response;
     }
 
     public void close(){
         try {
-            socket.close();
+            this.socket.close();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
-
-
-
 }

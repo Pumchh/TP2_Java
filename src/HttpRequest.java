@@ -15,31 +15,33 @@ public class HttpRequest {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String response = "";
-            int line = 0;
-            while((response = input.readLine()) != null) {
-                if (line == 0) {
-                    String[] parts = response.split(" ");
-                    if (parts.length >= 2) {
-                        method = parts[0];
-                        url = parts[1];
-                    }
-                    System.out.println("Method: " + method + " URL: " + url);
-                }
-            line++;
-            }
+            String line = "";
+
+            do {
+                line = input.readLine();
+                response += line;
+            } while(!line.isEmpty());
+
+            String[] lineSplit = response.split(" ");
+
+            this.method = lineSplit[0];
+            this.url = lineSplit[1];
+
+            System.out.println("Method: " + this.method + " URL: " + this.url);
         }
         catch (Exception e) {
             System.err.println(e.getMessage());
+
         }
     }
 
 
 
     public String getMethod() {
-        return method;
+        return this.method;
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 }
