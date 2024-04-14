@@ -23,7 +23,6 @@ public class HttpRequest {
             } while(!line.isEmpty());
 
             String[] lineSplit = response.split(" ");
-
             this.method = lineSplit[0];
             this.url = lineSplit[1];
 

@@ -1,22 +1,21 @@
-import java.io.IOException;
 import java.net.Socket;
 
 public class HttpContext {
-    private final Socket socket;
-    private final HttpRequest request;
-    private final HttpResponse response;
+    private Socket socket;
+    private HttpRequest request;
+    private HttpResponse response;
 
-    public HttpContext(Socket socket) throws IOException {
+    public HttpContext(Socket socket) {
         this.socket = socket;
         request = new HttpRequest(socket);
         response = new HttpResponse(socket);
     }
 
-    public HttpRequest getRequest() throws IOException{
+    public HttpRequest getRequest() {
         return request;
     }
 
-    public HttpResponse getResponse() throws IOException {
+    public HttpResponse getResponse() {
         return response;
     }
 

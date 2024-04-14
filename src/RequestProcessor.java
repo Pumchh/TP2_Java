@@ -1,23 +1,26 @@
 import java.io.File;
-import java.io.IOException;
 import java.net.Socket;
 
-public class RequestProcessor {
+public class RequestProcessor implements Runnable{
 
     private HttpContext context;
 
-    private void process() throws IOException {
-        HttpRequest request = this.context.getRequest();
-        HttpResponse response = this.context.getResponse();
-        File file = new File(request.getUrl().substring(1));
+    private void process(){
+        HttpRequest request = context.getRequest();
+        HttpResponse response = context.getResponse();
+        File file = new File((request.getUrl().substring(1)));
 
         if (file.getPath().equals("")) {
+            System.out.println("Search index.html");
             response.ok("OK");
-            response.sendFile("text/html", "src\\public\\index.html");
+            response.sendFile("text/html", "src/public/index.html");
         } else if (file.isFile()) {
+            System.out.println("Search another file");
             String[] path = file.getPath().split("\\.");
             String ext = path[path.length - 1];
             response.ok("OK");
+            System.out.println("ext : "+ ext);
+            System.out.println("path : " + file.getPath());
 
             switch (ext) {
                 case "html":
@@ -56,9 +59,12 @@ public class RequestProcessor {
 
     }
 
-    public RequestProcessor(Socket socket) throws IOException {
+    public RequestProcessor(Socket socket) {
         context = new HttpContext(socket);
-        process();
     }
 
+    @Override
+    public void run() {
+        process();
+    }
 }
